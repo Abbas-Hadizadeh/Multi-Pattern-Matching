@@ -84,8 +84,15 @@ class KeywordTree {
                 if(node == root)
                     continue;
             }
-            if(node.isPattern)     //a pattern is matched
-                out.put(new Pair(i-node.label.length()+2, i+1), node.label);    //store 1-based begin and end of the pattern
+            if(node.isPattern) {     //a pattern is matched
+                out.put(new Pair(i - node.label.length() + 2, i + 1), node.label);  //store 1-based begin and end of the pattern
+                Node tmp = node.failureLink;
+                while(tmp != root){
+                    if(tmp.isPattern)
+                        out.put(new Pair(i - tmp.label.length() + 2, i + 1), tmp.label);    //in case patterns have same suffixes
+                    tmp = tmp.failureLink;
+                }
+            }
         }
         return out;
     }
