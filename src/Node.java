@@ -23,8 +23,12 @@ class Node {
             label = parent.label + edge;
     }
 
-    public void addChild(Node node){
-        edges.put(node.edge, node);
+    public Node addEdge(char child){
+        if(edges.containsKey(child))
+            return edges.get(child);
+        Node newChild = new Node(child, this);
+        edges.put(child, newChild);
+        return newChild;
     }
 
     public int getDepth(){

@@ -21,19 +21,11 @@ class KeywordTree {
         for(String pattern : patterns){ //adding each pattern to the tree
             node = root;
             for(int i=0; i< pattern.length(); i++){
-                node = addEdge(node, pattern.charAt(i));
+                node = node.addEdge(pattern.charAt(i));
             }
             node.isPattern = true;  //the last character of the pattern
         }
         addFailureLinks();
-    }
-
-    private Node addEdge(Node parent, char edge){
-        if(parent.edges.containsKey(edge))
-            return parent.edges.get(edge);
-        Node child = new Node(edge, parent);
-        parent.addChild(child);
-        return child;
     }
 
     private void addFailureLinks(){ //adding failure links to search faster
