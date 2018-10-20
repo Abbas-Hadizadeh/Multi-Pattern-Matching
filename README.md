@@ -1,2 +1,2 @@
 # Multi-Pattern-Matching
-Multi-Pattern Matching using Keyword Tree with Failure Links
+Uses Keyword Tree on set of patterns to do exact pattern matching on a given text.
